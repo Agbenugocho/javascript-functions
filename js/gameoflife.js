@@ -1,11 +1,37 @@
-function seed() {}
+const { ifStatement } = require("jscodeshift");
 
-function same([x, y], [j, k]) {}
+function seed() {
+  for (let i=0; i< arguments.length; i++){
+    return arguments[i];
+  }
+}
+
+function same([x, y], [j, k]) {
+  if (x === j && y === k) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) {}
+function contains(cell) {
+  for (let i = 0; i < this.length; i++) {
+    if (same(this[i], cell)) {
+      return true;
+    } else {
+      return false;
+    }  
+  }
+}
 
-const printCell = (cell, state) => {};
+const printCell = (cell, state) => {
+  if (contains.call(state, cell)) {
+    return '\u25A3';
+  } else {
+    return '\u25A2';
+  }
+};
 
 const corners = (state = []) => {};
 
